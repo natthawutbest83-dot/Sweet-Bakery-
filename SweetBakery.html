@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sweet Bakery by TheBest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark-bg: #1a1a1d;
+      --dark-secondary: #4e4e50;
+      --accent: #f05454;
+      --text-light: #f5f5f5;
+      --button-hover: #ff6f61;
+      --shadow: rgba(240, 84, 84, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #222224 0%, #1a1a1d 100%);
+      font-family: 'Roboto Slab', serif;
+      color: var(--text-light);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header img {
+      width: 150px;
+      filter: drop-shadow(0 0 4px var(--accent));
+      border-radius: 10px;
+    }
+
+    h1 {
+      margin: 15px 0 0 0;
+      font-weight: 700;
+      font-size: 3rem;
+      letter-spacing: 3px;
+      color: var(--accent);
+      text-shadow: 0 0 8px var(--accent);
+    }
+
+    .menu-banner img {
+      max-width: 320px;
+      width: 90vw;
+      border-radius: 15px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 20px var(--shadow);
+      border: 3px solid var(--accent);
+    }
+
+    .menu-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .menu-item {
+      background: var(--dark-secondary);
+      border-radius: 15px;
+      padding: 25px 20px;
+      box-shadow: 0 0 10px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px var(--accent);
+    }
+
+    .menu-item h3 {
+      font-size: 1.6rem;
+      margin: 0 0 10px 0;
+      color: var(--accent);
+      letter-spacing: 1.3px;
+      text-shadow: 0 0 5px var(--accent);
+    }
+
+    .menu-item p {
+      font-size: 1.1rem;
+      margin: 6px 0 14px 0;
+      line-height: 1.4;
+      color: #dcdcdc;
+    }
+
+    .price {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #ff9a8b;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+      text-shadow: 0 0 6px #ff9a8b;
+    }
+
+    .order-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--accent);
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px var(--shadow);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+      user-select: none;
+    }
+
+    .order-btn:hover {
+      background: var(--button-hover);
+      box-shadow: 0 8px 25px rgba(255, 111, 97, 0.8);
+    }
+
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 1rem;
+      color: #aaa;
+      letter-spacing: 0.8px;
+      user-select: none;
+    }
+
+    /* Responsive text scaling */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .menu-item h3 {
+        font-size: 1.3rem;
+      }
+
+      .order-btn {
+        font-size: 1rem;
+        padding: 10px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="โลโก้ Sweet Bakery by TheBest" />
+    <h1>Sweet Bakery by TheBest</h1>
+  </header>
+
+  <div class="menu-banner">
+    <img src="menu.png" alt="เมนูขนมปังเค้ก" />
+  </div>
+
+  <section class="menu-list">
+    <div class="menu-item">
+      <h3>เค้กสตรอว์เบอร์รี่</h3>
+      <p>เค้กนุ่ม ๆ สอดไส้สตรอว์เบอร์รี่สด พร้อมครีมหวาน ๆ ลงตัวครับ 🍓</p>
+      <div class="price">35 บาท</div>
+      <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
+    </div>
+
+    <div class="menu-item">
+      <h3>เค้กส้มวานิลลา</h3>
+      <p>เค้กวานิลลาเนื้อเบา ราดด้วยซอสส้มสดชื่นครับ 🍊</p>
+      <div class="price">35 บาท</div>
+      <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
+    </div>
+
+    <div class="menu-item">
+      <h3>เค้กคาเฟ่</h3>
+      <p>รสกาแฟหอม ๆ ผสมอัลมอนด์เคี้ยวเพลินครับ ☕️</p>
+      <div class="price">40 บาท</div>
+      <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
+    </div>
+
+    <div class="menu-item">
+      <h3>เรดเวลเวท</h3>
+      <p>เค้กกำมะหยี่สีแดง ราดครีมชีสหวานนิด ๆ หอมดีครับ ❤️</p>
+      <div class="price">40 บาท</div>
+      <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
+    </div>
+
+    <div class="menu-item">
+      <h3>เค้กแครอท</h3>
+      <p>แครอทสดผสมวอลนัท หวานกำลังดีและสุขภาพดีครับ 🥕</p>
+      <div class="price">40 บาท</div>
+      <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
+    </div>
+
+    <div class="menu-item">
+      <h3>เค้กมะพร้าว</h3>
+      <p>เค้กนุ่ม ๆ สอดไส้มะพร้าวอ่อนสด ๆ ครับ 🥥</p>
+      <div class="price">35 บาท</div>
+      <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
+    </div>
+
+    <div class="menu-item">
+      <h3>เครปเค้ก</h3>
+      <p>เครปชั้นบางสลับครีมสด ละลายในปากครับ 🎂</p>
+      <div class="price">45 บาท</div>
+      <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
+    </div>
+
+    <div class="menu-item">
+      <h3>ช็อกโกแลตเข้มข้น</h3>
+      <p>ช็อกโกแลตลาวาเข้มข้น ราดซอสดาร์กครับ 🍫</p>
+      <div class="price">45 บาท</div>
+      <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
+    </div>
+
+    <div class="menu-item">
+      <h3>เค้กชาเขียว</h3>
+      <p>มัทฉะเข้มข้นกับครีมนมละมุนครับ 🍵</p>
+      <div class="price">40 บาท</div>
+      <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
+    </div>
+
+    <div class="menu-item">
+      <h3>บลูเบอร์รี่ชีสเค้ก</h3>
+      <p>ชีสเค้กนุ่ม ราดซอสบลูเบอร์รี่ฉ่ำ ๆ ครับ 🫐</p>
+      <div class="price">45 บาท</div>
+      <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
+    </div>
+  </section>
+
+  <footer>
+    เปิดทุกวัน 09:00 - 18:00 น. | เริ่มต้นเพียง 35 บาท<br />
+    มารับความหวานแบบมาร์ชเมลโล่กับผมได้ที่นี่ครับ 💥🔥
+  </footer>
+
+</body>
+</html>
