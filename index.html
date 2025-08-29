@@ -2,20 +2,114 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>Sweet Bakery by TheBest</title>
+  <title>Sweet Bakery by TheBest - ลูกเล่นเต็มขั้น!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-gradient-start: #ffe6f0;
-      --bg-gradient-end: #ffb3d9;
-      --accent-light: #ff66b3;
-      --accent-dark: #cc3380;
+      --color1: #ffe6f0;
+      --color2: #ffb3d9;
+      --color3: #ff66b3;
+      --color4: #cc3380;
       --text-primary: #4b0033;
       --text-secondary: #7f0055;
-      --shadow-light: rgba(255, 102, 179, 0.4);
-      --shadow-dark: rgba(204, 51, 128, 0.5);
+      --shadow-light: rgba(255, 102, 179, 0.5);
+      --shadow-dark: rgba(204, 51, 128, 0.6);
       --button-hover: #e60073;
+      --pulse-glow1: #ff99cc;
+      --pulse-glow2: #ff66b3;
+    }
+
+    /* Animate gradient background */
+    @keyframes bgShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Glow pulse animation */
+    @keyframes glowPulse {
+      0%, 100% {
+        box-shadow: 0 0 8px var(--pulse-glow1), 0 0 25px var(--pulse-glow2);
+      }
+      50% {
+        box-shadow: 0 0 15px var(--pulse-glow1), 0 0 40px var(--pulse-glow2);
+      }
+    }
+
+    /* Floating card animation */
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        box-shadow: 0 6px 20px var(--shadow-light), 0 0 15px var(--shadow-dark);
+      }
+      50% {
+        transform: translateY(-15px);
+        box-shadow: 0 12px 40px var(--shadow-dark), 0 0 25px var(--pulse-glow1);
+      }
+      100% {
+        transform: translateY(0);
+        box-shadow: 0 6px 20px var(--shadow-light), 0 0 15px var(--shadow-dark);
+      }
+    }
+
+    /* Button pop effect */
+    @keyframes buttonPop {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 8px 25px var(--shadow-light);
+      }
+      50% {
+        transform: scale(1.2);
+        box-shadow: 0 12px 35px rgba(230, 0, 115, 0.9);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 8px 25px var(--shadow-light);
+      }
+    }
+
+    /* Logo sway animation */
+    @keyframes sway {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(10deg);
+      }
+    }
+
+    /* Background dots */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -20%;
+      left: -20%;
+      width: 150vw;
+      height: 150vh;
+      background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.15) 1px, transparent 2px),
+                  radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 2px, transparent 4px),
+                  radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.12) 1.5px, transparent 3px);
+      background-repeat: repeat;
+      background-size: 50px 50px;
+      animation: bgDotsMove 30s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes bgDotsMove {
+      0% {
+        background-position: 0 0, 0 0, 0 0;
+      }
+      100% {
+        background-position: 100px 100px, 200px 150px, 300px 200px;
+      }
     }
 
     * {
@@ -24,175 +118,220 @@
 
     body {
       margin: 0;
-      background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
-      font-family: 'Poppins', 'Roboto Slab', serif;
+      background: linear-gradient(270deg, var(--color1), var(--color2), var(--color3), var(--color4));
+      background-size: 800% 800%;
+      animation: bgShift 25s ease infinite;
+      font-family: 'Poppins', sans-serif;
       color: var(--text-primary);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: 25px 15px;
       overflow-x: hidden;
+      user-select: none;
     }
 
     header {
       text-align: center;
-      margin-bottom: 40px;
-      filter: drop-shadow(0 0 8px var(--shadow-dark));
+      margin-bottom: 50px;
+      filter: drop-shadow(0 0 10px var(--shadow-dark));
     }
 
     header img {
       width: 160px;
       border-radius: 50%;
-      border: 4px solid var(--accent-light);
-      box-shadow: 0 0 20px var(--shadow-light);
+      border: 5px solid var(--color3);
+      box-shadow: 0 0 35px var(--pulse-glow2);
+      animation: sway 4s ease-in-out infinite;
+      cursor: pointer;
       transition: transform 0.4s ease;
     }
 
     header img:hover {
-      transform: rotate(10deg) scale(1.1);
+      transform: rotate(20deg) scale(1.2);
+      box-shadow: 0 0 60px var(--pulse-glow1);
     }
 
-    h1 {
-      margin: 15px 0 0 0;
-      font-weight: 900;
-      font-size: 3.8rem;
-      letter-spacing: 5px;
-      color: var(--accent-dark);
-      text-shadow:
-        0 0 6px var(--accent-light),
-        0 0 15px var(--accent-dark),
-        0 0 30px var(--accent-light);
-      font-family: 'Pacifico', cursive;
-    }
+   h1 {
+  margin: 15px 0 0 0;
+  font-weight: 900;
+  font-size: 4.2rem;
+  letter-spacing: 5px;
+  color: #0099ff; /* สีฟ้าสดใส */
+  text-shadow:
+    0 0 12px #00ccff,
+    0 0 25px #0099ff,
+    0 0 50px #0066cc; /* เงาสีฟ้า */
+  font-family: 'Pacifico', cursive;
+  user-select: text;
+}
+
 
     .menu-banner img {
       max-width: 360px;
       width: 90vw;
-      border-radius: 25px;
+      border-radius: 30px;
       margin-bottom: 50px;
       box-shadow:
-        0 8px 25px var(--shadow-dark),
-        inset 0 0 20px var(--shadow-light);
-      border: 5px solid var(--accent-light);
+        0 12px 30px var(--shadow-dark),
+        inset 0 0 30px var(--pulse-glow1);
+      border: 7px solid var(--color3);
       transition: transform 0.5s ease;
+      cursor: zoom-in;
+      filter: drop-shadow(0 0 20px var(--pulse-glow2));
     }
 
     .menu-banner img:hover {
-      transform: scale(1.05) rotate(2deg);
+      transform: scale(1.08) rotate(3deg);
+      filter: drop-shadow(0 0 35px var(--pulse-glow2));
     }
 
     .menu-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
       width: 100%;
-      max-width: 1150px;
+      max-width: 1200px;
     }
 
     .menu-item {
       background: #fff0f7;
-      border-radius: 30px;
-      padding: 30px 25px;
+      border-radius: 40px;
+      padding: 35px 28px;
       box-shadow:
-        0 6px 20px var(--shadow-light),
+        0 8px 25px var(--shadow-light),
         0 0 15px var(--shadow-dark);
       transition: transform 0.35s ease, box-shadow 0.35s ease;
       cursor: pointer;
       color: var(--text-primary);
-      border: 2px solid transparent;
+      border: 3px solid transparent;
+      animation: floatUp 6s ease-in-out infinite;
+      position: relative;
     }
 
     .menu-item:hover {
-      transform: translateY(-12px);
+      transform: translateY(-18px) scale(1.03);
       box-shadow:
-        0 10px 40px var(--shadow-dark),
-        0 0 25px var(--accent-light);
-      border-color: var(--accent-light);
+        0 15px 50px var(--shadow-dark),
+        0 0 40px var(--pulse-glow1);
+      border-color: var(--color3);
+      animation-play-state: paused;
+      z-index: 10;
     }
 
     .menu-item h3 {
-      font-size: 1.9rem;
-      margin: 0 0 15px 0;
-      color: var(--accent-dark);
-      letter-spacing: 1.8px;
-      font-weight: 700;
-      text-shadow: 0 0 6px var(--accent-light);
+      font-size: 2.1rem;
+      margin: 0 0 20px 0;
+      color: var(--color4);
+      letter-spacing: 1.6px;
+      font-weight: 800;
+      text-shadow: 0 0 10px var(--color3);
       font-family: 'Pacifico', cursive;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      user-select: text;
+    }
+
+    /* Emoji icon bounce */
+    .menu-item h3 span.emoji {
+      display: inline-block;
+      animation: bounce 3s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
     }
 
     .menu-item p {
-      font-size: 1.25rem;
-      margin: 8px 0 20px 0;
+      font-size: 1.3rem;
+      margin: 10px 0 28px 0;
       line-height: 1.5;
       color: var(--text-secondary);
-      font-weight: 500;
+      font-weight: 600;
       user-select: none;
+      letter-spacing: 0.5px;
+      min-height: 78px;
     }
 
     .price {
       font-weight: 900;
-      font-size: 1.6rem;
-      color: var(--accent-dark);
-      margin-bottom: 22px;
-      letter-spacing: 1.2px;
+      font-size: 1.75rem;
+      color: var(--color4);
+      margin-bottom: 25px;
+      letter-spacing: 1.3px;
       text-shadow:
-        0 0 8px var(--accent-light),
-        0 0 18px var(--accent-dark);
+        0 0 12px var(--color3),
+        0 0 25px var(--color4);
+      user-select: text;
     }
 
     .order-btn {
       display: inline-block;
-      padding: 14px 36px;
-      background: var(--accent-light);
+      padding: 16px 42px;
+      background: var(--color3);
       color: white;
-      font-weight: 700;
-      font-size: 1.3rem;
+      font-weight: 800;
+      font-size: 1.4rem;
       border: none;
-      border-radius: 60px;
+      border-radius: 70px;
       cursor: pointer;
       box-shadow:
-        0 8px 25px var(--shadow-light);
+        0 10px 30px var(--shadow-light);
       transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
       text-decoration: none;
       user-select: none;
       text-align: center;
       font-family: 'Poppins', sans-serif;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
+      filter: drop-shadow(0 0 15px var(--pulse-glow2));
+      animation: glowPulse 3.5s ease-in-out infinite;
     }
 
     .order-btn:hover {
+      animation: buttonPop 0.6s ease forwards;
       background: var(--button-hover);
       box-shadow:
-        0 12px 35px rgba(230, 0, 115, 0.9);
-      transform: scale(1.1);
+        0 18px 45px rgba(230, 0, 115, 1);
+      transform-origin: center;
     }
 
     footer {
-      margin-top: 70px;
-      text-align: center;
-      font-size: 1.15rem;
-      color: var(--accent-dark);
-      letter-spacing: 1.2px;
-      font-weight: 600;
-      user-select: none;
-      font-family: 'Poppins', sans-serif;
-      text-shadow: 0 0 8px var(--accent-light);
-    }
+  margin-top: 80px;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #0099ff; /* ฟ้าสดใส */
+  letter-spacing: 1.4px;
+  font-weight: 700;
+  user-select: none;
+  font-family: 'Poppins', sans-serif;
+  text-shadow:
+    0 0 12px #00ccff,
+    0 0 25px #0099ff,
+    0 0 50px #0066cc; /* เงาสีฟ้า */
+}
 
-    /* Responsive text scaling */
+
+    /* Responsive */
     @media (max-width: 480px) {
       h1 {
-        font-size: 3rem;
+        font-size: 3.4rem;
       }
-
       .menu-item h3 {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
       }
-
-      .order-btn {
+      .menu-item p {
         font-size: 1.1rem;
-        padding: 12px 30px;
+        min-height: auto;
+      }
+      .order-btn {
+        font-size: 1.2rem;
+        padding: 14px 34px;
       }
     }
   </style>
@@ -210,71 +349,71 @@
 
   <section class="menu-list">
     <div class="menu-item">
-      <h3>เค้กสตรอว์เบอร์รี่</h3>
-      <p>เค้กนุ่ม ๆ สอดไส้สตรอว์เบอร์รี่สด พร้อมครีมหวาน ๆ ลงตัวครับ 🍓</p>
+      <h3><span class="emoji">🍓</span> เค้กสตรอว์เบอร์รี่</h3>
+      <p>เค้กนุ่ม ๆ สอดไส้สตรอว์เบอร์รี่สด พร้อมครีมหวาน ๆ ลงตัวครับ</p>
       <div class="price">35 บาท</div>
       <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
     </div>
 
     <div class="menu-item">
-      <h3>เค้กส้มวานิลลา</h3>
-      <p>เค้กวานิลลาเนื้อเบา ราดด้วยซอสส้มสดชื่นครับ 🍊</p>
+      <h3><span class="emoji">🍊</span> เค้กส้มวานิลลา</h3>
+      <p>เค้กวานิลลาเนื้อเบา ราดด้วยซอสส้มสดชื่นครับ</p>
       <div class="price">35 บาท</div>
       <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
     </div>
 
     <div class="menu-item">
-      <h3>เค้กกาเฟ่</h3>
-      <p>รสกาแฟหอม ๆ ผสมอัลมอนด์เคี้ยวเพลินครับ ☕️</p>
+      <h3><span class="emoji">☕️</span> เค้กคาเฟ่</h3>
+      <p>รสกาแฟหอม ๆ ผสมอัลมอนด์เคี้ยวเพลินครับ</p>
       <div class="price">40 บาท</div>
       <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
     </div>
 
     <div class="menu-item">
-      <h3>เรดเวลเวท</h3>
-      <p>เค้กกำมะหยี่สีแดง ราดครีมชีสหวานนิด ๆ หอมดีครับ ❤️</p>
+      <h3><span class="emoji">❤️</span> เรดเวลเวท</h3>
+      <p>เค้กกำมะหยี่สีแดง ราดครีมชีสหวานนิด ๆ หอมดีครับ</p>
       <div class="price">40 บาท</div>
       <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
     </div>
 
     <div class="menu-item">
-      <h3>เค้กแครอท</h3>
-      <p>แครอทสดผสมวอลนัท หวานกำลังดีและสุขภาพดีครับ 🥕</p>
+      <h3><span class="emoji">🥕</span> เค้กแครอท</h3>
+      <p>แครอทสดผสมวอลนัท หวานกำลังดีและสุขภาพดีครับ</p>
       <div class="price">40 บาท</div>
       <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
     </div>
 
     <div class="menu-item">
-      <h3>เค้กมะพร้าว</h3>
-      <p>เค้กนุ่ม ๆ สอดไส้มะพร้าวอ่อนสด ๆ ครับ 🥥</p>
+      <h3><span class="emoji">🥥</span> เค้กมะพร้าว</h3>
+      <p>เค้กนุ่ม ๆ สอดไส้มะพร้าวอ่อนสด ๆ ครับ</p>
       <div class="price">35 บาท</div>
       <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
     </div>
 
     <div class="menu-item">
-      <h3>เครปเค้ก</h3>
-      <p>เครปชั้นบางสลับครีมสด ละลายในปากครับ 🎂</p>
+      <h3><span class="emoji">🎂</span> เครปเค้ก</h3>
+      <p>เครปชั้นบางสลับครีมสด ละลายในปากครับ</p>
       <div class="price">45 บาท</div>
       <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
     </div>
 
     <div class="menu-item">
-      <h3>ช็อกโกแลตเข้มข้น</h3>
-      <p>ช็อกโกแลตลาวาเข้มข้น ราดซอสดาร์กครับ 🍫</p>
+      <h3><span class="emoji">🍫</span> ช็อกโกแลตเข้มข้น</h3>
+      <p>ช็อกโกแลตลาวาเข้มข้น ราดซอสดาร์กครับ</p>
       <div class="price">45 บาท</div>
       <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
     </div>
 
     <div class="menu-item">
-      <h3>เค้กชาเขียว</h3>
-      <p>มัทฉะเข้มข้นกับครีมนมละมุนครับ 🍵</p>
+      <h3><span class="emoji">🍵</span> เค้กชาเขียว</h3>
+      <p>มัทฉะเข้มข้นกับครีมนมละมุนครับ</p>
       <div class="price">40 บาท</div>
       <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
     </div>
 
     <div class="menu-item">
-      <h3>บลูเบอร์รี่ชีสเค้ก</h3>
-      <p>ชีสเค้กนุ่ม ราดซอสบลูเบอร์รี่ฉ่ำ ๆ ครับ 🫐</p>
+      <h3><span class="emoji">🫐</span> บลูเบอร์รี่ชีสเค้ก</h3>
+      <p>ชีสเค้กนุ่ม ราดซอสบลูเบอร์รี่ฉ่ำ ๆ ครับ</p>
       <div class="price">45 บาท</div>
       <a href="line://ti/p/@578aziem" target="_blank" class="order-btn">สั่งเค้ก</a>
     </div>
@@ -282,9 +421,8 @@
 
   <footer>
     เปิดทุกวัน 09:00 - 18:00 น. | เริ่มต้นเพียง 35 บาท<br />
-    มารับความหวานแบบมาร์ชเมลโล่กับผมได้ที่นี่ครับ 💥🔥
+    มารับความหวานที่ Sweet Bakery by TheBest นะครับ!
   </footer>
 
 </body>
 </html>
-
